@@ -9,17 +9,22 @@
         android:roundIcon="@drawable/iconn"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Emergency"></activity>
+        <activity android:name=".RegisrationForm"></activity>
+        <activity android:name=".Emergency" />
         <activity android:name=".tipsDescribe" />
-        <activity android:name=".Language" android:noHistory="true" />
-        <activity android:name=".login"
-            android:noHistory="true"/>
+        <activity
+            android:name=".Language"
+            android:noHistory="true" />
+        <activity
+            android:name=".login"
+            android:noHistory="true" />
         <activity
             android:name=".webView"
             android:noHistory="true" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".Assessment"
-            android:noHistory="true"/>
+        <activity
+            android:name=".Assessment"
+            android:noHistory="true" />
         <activity
             android:name=".splash"
             android:noHistory="true">
@@ -31,10 +36,10 @@
         </activity>
         <activity android:name=".MainActivity" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

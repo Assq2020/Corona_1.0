@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CoronaVirus</string>
+    <string name="generate_otp">Generate Otp</string>
+    <string name="enter_phone_number">Enter Phone number</string>
+    <string name="login">Login</string>
+    <string name="resend_the_verification_code_in">Resend the Verification code in: 2:00 min</string>
+    <string name="enter_otp">Enter Otp</string>
+    <string name="resend_code">Resend Code</string>
 </resources>
