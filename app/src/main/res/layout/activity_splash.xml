@@ -5,12 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".splash">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="Only together We Can!"
-    android:textColor="#00bbff"
-    android:textSize="30sp"
-    android:textStyle="bold"
-    android:gravity="center"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="100dp"
+        android:src="@drawable/iconn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="68dp"
+        android:text="Only together We Can!"
+        android:textColor="#00bbff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+        app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/circleImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

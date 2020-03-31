@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -30,6 +31,7 @@
     android:orientation="vertical"
     android:paddingTop="15dp"
     android:paddingRight="30dp"
+    android:paddingLeft="30dp"
     android:paddingBottom="10dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +53,7 @@
         android:textStyle="italic"
         android:layout_gravity="end"/>
 </LinearLayout>
+
                 <GridLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,9 +63,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/qqq">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/Assessment"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_margin="20dp">
+                        android:layout_margin="10dp">
 
                         <ImageView
                             android:layout_width="100dp"
@@ -81,15 +85,16 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/RestrictedAreaid"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_margin="20dp">
+                        android:layout_margin="10dp">
 
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/restricted_area" />
+                            android:src="@drawable/restricted" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -103,15 +108,17 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/emergencyy"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_margin="20dp">
+                        android:layout_margin="10dp">
 
                         <ImageView
+                            android:id="@+id/emergency"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/restricted_area" />
+                            android:src="@drawable/emergency" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -125,15 +132,16 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/suspect"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_margin="20dp">
+                        android:layout_margin="10dp">
 
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/restricted_area" />
+                            android:src="@drawable/suspect" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -148,17 +156,19 @@
 
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/doctorsId"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_margin="20dp">
+                        android:layout_margin="10dp">
 
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/restricted_area" />
+                            android:src="@drawable/doctor2" />
 
                         <TextView
+                            android:id="@+id/DoctorsTXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -170,17 +180,19 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/foodshopId"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_margin="20dp">
+                        android:layout_margin="10dp">
 
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/restricted_area" />
+                            android:src="@drawable/shops2" />
 
                         <TextView
+                            android:id="@+id/foodshopsTXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -192,39 +204,43 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/news"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_margin="20dp">
+                        android:layout_margin="10dp">
 
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/restricted_area" />
+                            android:src="@drawable/nw" />
 
                         <TextView
+                            android:id="@+id/newsTXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
                             android:gravity="center"
-                            android:text="Feedback"
+                            android:text="News"
                             android:textColor="#00bbff"
                             android:textStyle="bold" />
 
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/contactus"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_margin="20dp">
+                        android:layout_margin="10dp">
 
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/restricted_area" />
+                            android:src="@drawable/ab1" />
 
                         <TextView
+                            android:id="@+id/contactTXT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -240,7 +256,7 @@
                     android:id="@+id/flipper"
                     android:layout_width="407dp"
                     android:layout_height="257dp"
-                    android:background="#8F8D8D"
+                    android:background="#ffffff"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -249,40 +265,40 @@
                         android:id="@+id/flipper1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/pic1"/>
+                        android:src="@drawable/poster5"/>
 
                     <ImageView
                         android:id="@+id/flipper2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/pic2" />
+                        android:src="@drawable/poster2" />
 
                     <ImageView
                         android:id="@+id/flipper3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/pic3" />
+                        android:src="@drawable/poster4" />
 
 
                     <ImageView
                         android:id="@+id/flipper4"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/pic1" />
+                        android:src="@drawable/posters3" />
 
 
                     <ImageView
                         android:id="@+id/flipper5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/pic1" />
+                        android:src="@drawable/poster5" />
 
 
                     <ImageView
                         android:id="@+id/flipper6"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/pic1" />
+                        android:src="@drawable/poster6" />
 
 
                 </ViewFlipper>
@@ -321,6 +337,8 @@
                 android:paddingBottom="100dp">
                 <TextView
                     android:id="@+id/te"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="35dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -344,40 +362,205 @@
                     app:layout_constraintTop_toBottomOf="@+id/te">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/what_is_Coronavirus"
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle" />
+                        android:background="@drawable/greycircle">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="100dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/virus_pic"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:text="What Is Coronavirus?"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="25sp"
+                            android:textColor="#000000"/>
+                    </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/What_are_symptoms"
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle" />
+                        android:background="@drawable/greycircle" >
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+
+                            android:layout_marginTop="10dp"
+                            android:layout_width="100dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/symptoms_pic"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:text="What Are The Symptoms?"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="25sp"
+                            android:textColor="#000000"/>
+                    </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/How_it_is_transmitted"
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle" />
+                        android:background="@drawable/greycircle" >
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+
+                            android:layout_marginTop="10dp"
+                            android:layout_width="100dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/sneezing"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:text="How Is It Transmitted?"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="25sp"
+                            android:textColor="#000000"/>
+                    </androidx.cardview.widget.CardView>
+
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/How_to_prevent_it"
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle" />
+                        android:background="@drawable/greycircle" >
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+
+                            android:layout_marginTop="10dp"
+                            android:layout_width="100dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/alcohal_clean"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:text="How To Prevent It?"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="25sp"
+                            android:textColor="#000000"/>
+                    </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/When_to_wear_mask"
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle" />
+                        android:background="@drawable/greycircle" >
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+
+                            android:layout_marginTop="10dp"
+                            android:layout_width="100dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/mask1"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:text="When To Wear Mask?"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="25sp"
+                            android:textColor="#000000"/>
+                    </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/Is_ther_is_anyTreatment"
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle" />
+                        android:background="@drawable/greycircle" >
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+
+                            android:layout_marginTop="10dp"
+                            android:layout_width="100dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/vaccine_kit"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:text="Is There Is Any Treatment?"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="25sp"
+                            android:textColor="#000000"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/Information_for_travelers"
+                        android:layout_width="150dp"
+                        android:layout_height="250dp"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/greycircle" >
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+
+                            android:layout_marginTop="10dp"
+                            android:layout_width="100dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/aeroplane"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:text="Information For Travelers"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="25sp"
+                            android:textColor="#000000"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/Fake_News"
+                        android:layout_width="150dp"
+                        android:layout_height="250dp"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/greycircle" >
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+
+                            android:layout_marginTop="10dp"
+                            android:layout_width="100dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/fakenews"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:text="Be Aware From Fake News"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:textSize="25sp"
+                            android:textColor="#000000"/>
+                    </androidx.cardview.widget.CardView>
+
                 </GridLayout>
 
                  </androidx.constraintlayout.widget.ConstraintLayout>
@@ -466,11 +649,11 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilebutton"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/greycircle"
+            android:src="@drawable/iconn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

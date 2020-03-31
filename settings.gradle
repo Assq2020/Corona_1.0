@@ -1,2 +1,3 @@
 include ':app'
+include ':translateapi'
 rootProject.name='Corona'
