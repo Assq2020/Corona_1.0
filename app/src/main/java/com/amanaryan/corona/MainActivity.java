@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         contactus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Contactus.class));
                 Toast.makeText(MainActivity.this, "We are working on it", Toast.LENGTH_SHORT).show();
             }
         });

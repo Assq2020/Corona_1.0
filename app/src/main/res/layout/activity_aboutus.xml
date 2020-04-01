@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".Aboutus">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_about"
+        android:layout_width="wrap_content"
+        android:layout_height="246dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="25dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="265dp"
+            android:background="@android:color/white">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/logo_image"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="134dp"
+                android:layout_marginBottom="0dp"
+                android:src="@drawable/iconn"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/app_name_about"
+                android:layout_width="193dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo_image"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="115dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="79dp"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp"
+                android:text="CoronaVirus"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/devoloper_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/app_name_about"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="85dp"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="Devoloped by-ASSQ Group"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/team_about"
+        android:layout_width="282dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cv_about"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="54dp"
+        android:padding="5dp"
+        android:text="About ASSQ"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_aman_about"
+        android:layout_width="378dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/team_about"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:padding="5dp"
+                android:text="ASSQ is a android application devolopment group created by students of Marwari College Ranchi under the supervision of Placement Cell Co-Ordinator Mr Anubhav Sir.This group is leading by Aman Kumar BCA final year MCR  "
+                android:textSize="16sp"
+                android:textColor="@android:color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teammates of ASSQ"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:padding="5dp"
+                android:textSize="18sp"/>
+
+
+
+            <TextView
+                android:id="@+id/name_aman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+
+
+                android:padding="5dp"
+                android:text=" Aman Kumar BCA final year MCR"
+
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/qamar_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@+id/name_aman"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="0dp"
+                android:padding="5dp"
+                android:text=" Qamar Anwar BCA second year MCR"
+
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/sandip_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/qamar_name"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="0dp"
+                android:padding="5dp"
+                android:text=" Sandeep Kumar BCA second year MCR"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
