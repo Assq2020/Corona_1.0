@@ -6,4 +6,5 @@
     <string name="resend_the_verification_code_in">Resend the Verification code in: 2:00 min</string>
     <string name="enter_otp">Enter Otp</string>
     <string name="resend_code">Resend Code</string>
+    <string name="loading">Loading</string>
 </resources>

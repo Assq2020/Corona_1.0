@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login">
-
+<!--otplayout-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Otplay"
         android:layout_width="match_parent"
@@ -14,6 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <EditText
             android:id="@+id/otptext"
             android:layout_width="150dp"
@@ -68,6 +69,9 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--Enter phone number-->
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/phonelay"
         android:layout_width="match_parent"
@@ -76,9 +80,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-
-        <!--Enter phone number-->
 
         <EditText
             android:id="@+id/Phonenumberid"
@@ -118,6 +119,45 @@
             app:layout_constraintStart_toStartOf="@+id/Generateotpbtn"
             app:layout_constraintTop_toBottomOf="@+id/Generateotpbtn" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    progressbar layout-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/progressbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                android:textColor="#00bbff"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_margin="15dp"
+
+                />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+        android:layout_margin="15dp"
+                android:layout_height="wrap_content"
+        />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

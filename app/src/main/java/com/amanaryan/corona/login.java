@@ -29,19 +29,23 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.concurrent.TimeUnit;
 
 public class login extends AppCompatActivity {
-ConstraintLayout phoneLy,otpLy;
+ConstraintLayout phoneLy,otpLy,progressbar;
 Button otpBtn,loginBtn,MasterLogin;
 EditText phone,otptext;
     String phnumber,sentcode;
     TextView Resendcode;
     //static ph number is user is already Logged in
     static String number;
+    String yes="YES";
 private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        progressbar=findViewById(R.id.progressbarLayout);
+        progressbar.setVisibility(View.GONE);
         phoneLy = (ConstraintLayout) findViewById(R.id.phonelay);
         otpLy=findViewById(R.id.Otplay);
         otpBtn = findViewById(R.id.Generateotpbtn);
@@ -60,6 +64,8 @@ private FirebaseAuth mAuth;
         Resendcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Resendcode.setVisibility(View.GONE);
+                Toast.makeText(login.this, "Code Resending...", Toast.LENGTH_LONG).show();
                 requestOtp(phnumber);
 
             }
@@ -109,7 +115,7 @@ private FirebaseAuth mAuth;
         public void run() {
             Resendcode.setVisibility(View.VISIBLE);
         }
-    },13000);
+    },20000);
     }
 //
 //    private void LoggedInNotCheck() {
@@ -153,14 +159,11 @@ private FirebaseAuth mAuth;
                         if(task.isSuccessful()){
                             //successfully signed in as code of user and sent code matched;
 
-
-
-
                             SQLiteDatabase conn=openOrCreateDatabase("db",MODE_PRIVATE,null);
                             conn.execSQL("create table if not exists Login(user varchar,RegisteredPhNumber Int);");
 
-                            conn.execSQL("insert into cardcolor values('YES',"+"'"+phnumber+"'"+");");
-                            Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            conn.execSQL("insert into Login values("+"'"+yes+"'"+","+"'"+phnumber+"'"+");");
+                            Toast.makeText(login.this, "Login Successful", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(),RegisrationForm.class));
 
                         }else{
