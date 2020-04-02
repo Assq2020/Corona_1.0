@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.amanaryan.corona.newsbox.Newslist;
 import com.amanaryan.translateapi.TranslateAPI;
 
 import java.text.SimpleDateFormat;
@@ -53,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "We are working on it", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), Newslist.class));
+                //Toast.makeText(MainActivity.this, "We are working on it", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Contactus.class));
-                Toast.makeText(MainActivity.this, "We are working on it", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "We are working on it", Toast.LENGTH_SHORT).show();
             }
         });
 
