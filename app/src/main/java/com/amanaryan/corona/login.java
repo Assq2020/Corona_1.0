@@ -161,7 +161,7 @@ private FirebaseAuth mAuth;
 
                             conn.execSQL("insert into cardcolor values('YES',"+"'"+phnumber+"'"+");");
                             Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),RegisrationForm.class));
+                            startActivity(new Intent(getApplicationContext(),Resistrationform.class));
 
                         }else{
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException){

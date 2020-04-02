@@ -21,9 +21,7 @@
         <activity android:name=".Helpus" />
         <activity android:name=".Connectus" />
         <activity android:name=".Contactus" />
-        <activity android:name=".Contactus.Connectus" />
-        <activity android:name=".Contactus.Contactus" />
-        <activity android:name=".RegisrationForm" />
+        <activity android:name=".Resistrationform"/>
         <activity android:name=".Emergency" />
         <activity android:name=".tipsDescribe" />
         <activity
