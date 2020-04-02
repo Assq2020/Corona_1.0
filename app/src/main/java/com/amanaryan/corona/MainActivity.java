@@ -3,14 +3,26 @@ package com.amanaryan.corona;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -30,23 +42,28 @@ public class MainActivity extends AppCompatActivity {
     ConstraintLayout home, tips;
     TextView homeInactive, homeActive, tipsInactive, tipsActive;
     ImageView profilebtn;
-    CardView RestrtictedArea, Doctors, Foodshops,Assessment,emergency,news,suspect,contactus;
+    CardView RestrtictedArea, Doctors, Foodshops, Assessment, emergency, news, suspect, contactus;
     TextView A, B, C, D, E, F, G, h;
     //Tips Activity
     CardView Wcorona, Symptoms, transmitted, prevent, Mask, Treatment, Travel, fakenews;
+    private LocationManager locationManager;
+    private LocationListener locationListener,llocationListener;
+    double userLatitude,userGpslati;
+    double userLongitude,userGpslongi;
+    private static final int My_permission_request_code = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        emergency=findViewById(R.id.emergencyy);
-        news=findViewById(R.id.news);
-        suspect=findViewById(R.id.suspect);
-        contactus=findViewById(R.id.contactus);
+        emergency = findViewById(R.id.emergencyy);
+        news = findViewById(R.id.news);
+        suspect = findViewById(R.id.suspect);
+        contactus = findViewById(R.id.contactus);
         emergency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Emergency.class));
+                startActivity(new Intent(getApplicationContext(), Emergency.class));
             }
         });
 
@@ -67,14 +84,12 @@ public class MainActivity extends AppCompatActivity {
         contactus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Contactus.class));
-                Toast.makeText(MainActivity.this, "We are working on it", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), Contactus.class));
             }
         });
 
 
-
-        Assessment=findViewById(R.id.Assessment);
+        Assessment = findViewById(R.id.Assessment);
         Assessment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,9 +102,9 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
         String date = sdf.format(new Date());
-       // int endMONTH=(date.charAt(3)*10)+date.charAt(4);
+        // int endMONTH=(date.charAt(3)*10)+date.charAt(4);
 
-     //   Toast.makeText(this, "hi "+endMONTH+"  "+date, Toast.LENGTH_LONG).show();
+        //   Toast.makeText(this, "hi "+endMONTH+"  "+date, Toast.LENGTH_LONG).show();
         Wcorona = findViewById(R.id.what_is_Coronavirus);
         Symptoms = findViewById(R.id.What_are_symptoms);
         transmitted = findViewById(R.id.How_it_is_transmitted);
@@ -254,38 +269,41 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("ShowToast")
     private void checkhealth() {
 
-        SQLiteDatabase conn=openOrCreateDatabase("db",MODE_PRIVATE,null);
-     //   conn.execSQL("create table if not exists cardcolor(name varchar,age int,mobile int,aadhar varchar,address varchar,phealthissue varchar,ptraveldetail,color varchar,startdate varchar,enddate varchar);");
+        SQLiteDatabase conn = openOrCreateDatabase("db", MODE_PRIVATE, null);
+        //   conn.execSQL("create table if not exists cardcolor(name varchar,age int,mobile int,aadhar varchar,address varchar,phealthissue varchar,ptraveldetail,color varchar,startdate varchar,enddate varchar);");
 //0 to 9
         conn.execSQL("create table if not exists cardcolor(color varchar,percent varchar);");
 //0 to 9
-       // Cursor c= conn.rawQuery("select * from cardcolor where color= 'yellow' or color='red'",null);
-                Cursor c= conn.rawQuery("select * from cardcolor" ,null);
+        // Cursor c= conn.rawQuery("select * from cardcolor where color= 'yellow' or color='red'",null);
+        Cursor c = conn.rawQuery("select * from cardcolor", null);
         //
-        if(c.moveToFirst()){
-            healthcolor=c.getString(0);
+        if (c.moveToFirst()) {
+            healthcolor = c.getString(0);
 //            String enddate=c.getString(9);
 //            int endMONTH=(enddate.charAt(3)*10)+enddate.charAt(4);
 //            int enddd=(enddate.charAt(0)*10)+enddate.charAt(1);
-//            @SuppressLint("SimpleDateFormat")
-//            SimpleDateFormat sdf=new SimpleDateFormat("dd/mm/yyyy");
-//            String date=sdf.format(new Date());
+
+
+
 //            int todaymonth=(date.charAt(3)*10)+date.charAt(4);
 //            int todaydd=(date.charAt(0)*10)+date.charAt(1);
 //            if(endMONTH==todaymonth){
 //            if(enddd<=todaydd){
 //                recheck and update color of card
-            }
+if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
 
-         else{
+
+    getGPSLocation();
+}
+
+        } else {
+            please_move_selfAssingment();
 //            intent to selfAssessment
 
         }
-
-
-
 
 
         //
@@ -311,4 +329,131 @@ public class MainActivity extends AppCompatActivity {
 // }
 
 
-}}
+    }
+
+    public void getGPSLocation() {
+// new Aboutus().toast();
+
+
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                userGpslongi= location.getLongitude();
+                userGpslati= location.getLatitude();
+                sendGPSLocation();
+
+                Toast.makeText(MainActivity.this, "GPS send", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(MainActivity.this, "GPS send"+userGpslati+" "+userGpslongi, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+//                Toast.makeText(MainActivity.this, "gps On", Toast.LENGTH_SHORT).show();
+////
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+                Toast.makeText(MainActivity.this, "gps OFFFFFFFFF", Toast.LENGTH_SHORT).show();
+                TurnonGps();
+
+            }
+        };llocationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                userLongitude = location.getLongitude();
+                userLatitude = location.getLatitude();
+
+                Toast.makeText(MainActivity.this, "NETWORK send", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "NETWORK send"+userLongitude+" "+userLatitude, Toast.LENGTH_SHORT).show();
+
+                sendNetworklocation();
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        };
+        configure();
+
+       //end of sendGPS method
+    }
+
+
+    public void configure() {
+
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!=
+                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)!=
+                PackageManager.PERMISSION_GRANTED){
+            Toast.makeText(MainActivity.this, "Permission", Toast.LENGTH_SHORT).show();
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.INTERNET}
+                        ,10);
+            }
+
+            return;
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000,0,locationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,3000,0,llocationListener);
+    }
+
+
+    public void TurnonGps() {
+        LayoutInflater li=getLayoutInflater();
+        View layout=li.inflate(R.layout.customtoast,(ViewGroup)findViewById(R.id.customtoastLayoutId));
+
+        Toast toast =new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER_VERTICAL,0,0);
+        toast.setView(layout);
+        toast.show();
+
+    }
+    public void please_move_selfAssingment(){
+        LayoutInflater li=getLayoutInflater();
+        View layout=li.inflate(R.layout.self_toast,(ViewGroup)findViewById(R.id.plsselfassesment));
+
+        Toast toast =new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER_VERTICAL,0,0);
+        toast.setView(layout);
+        toast.show();
+
+
+    }
+
+    private void sendGPSLocation() {
+
+    }
+
+    private void sendNetworklocation() {
+    }
+
+}
+
+

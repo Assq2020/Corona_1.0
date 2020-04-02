@@ -2,6 +2,7 @@ package com.amanaryan.corona;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +14,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Assessment extends AppCompatActivity {
     String health_card;
@@ -33,6 +37,18 @@ public class Assessment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment);
+
+
+
+
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat sdfD=new SimpleDateFormat("dd");
+        int date= Integer.parseInt(sdfD.format(new Date()));
+
+        Toast.makeText(this, "Today's date :"+date, Toast.LENGTH_SHORT).show();
+
+
+
 
         //Assigning values
         editText1 = (EditText)findViewById(R.id.age);
