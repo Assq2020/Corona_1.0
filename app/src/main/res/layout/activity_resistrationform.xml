@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Resistrationform">
+
+    <TextView
+        android:id="@+id/resisteration_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="50dp"
+        android:padding="5dp"
+        android:text="Resistration"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fullname_et_resistration"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:hint="Full Name"
+        android:padding="10dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resisteration_tv" />
+
+    <EditText
+        android:id="@+id/email_et_resistration"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:hint="Email"
+        android:paddingLeft="10dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/fullname_et_resistration"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fullname_et_resistration"
+        app:layout_constraintTop_toBottomOf="@+id/fullname_et_resistration" />
+
+    <EditText
+        android:id="@+id/occupation_et_resistration"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:hint="Occupation"
+        android:paddingLeft="10dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/email_et_resistration"
+        app:layout_constraintStart_toStartOf="@+id/email_et_resistration"
+        tools:layout_editor_absoluteY="211dp" />
+
+    <LinearLayout
+        android:id="@+id/dob_sex_layout_resister"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/occupation_et_resistration"
+        app:layout_constraintStart_toStartOf="@+id/occupation_et_resistration"
+        app:layout_constraintTop_toBottomOf="@+id/occupation_et_resistration">
+
+        <EditText
+            android:id="@+id/age_et_resister"
+            android:layout_width="123dp"
+            android:layout_height="match_parent"
+            android:hint="Age"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/sex_popup_button_resister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="sex" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addres_layout"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/dob_sex_layout_resister"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dob_sex_layout_resister"
+        app:layout_constraintTop_toBottomOf="@+id/dob_sex_layout_resister"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/state_adres_et_resister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="State"/>
+        <EditText
+            android:id="@+id/city_adres_et_resister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="City"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Local Adress"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/travell_history"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:text="Travel History"
+        app:layout_constraintEnd_toEndOf="@+id/addres_layout"
+        app:layout_constraintStart_toStartOf="@+id/addres_layout"
+        app:layout_constraintTop_toBottomOf="@+id/addres_layout" />
+
+    <Button
+        android:id="@+id/Health_history"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:text="Health History"
+        app:layout_constraintEnd_toEndOf="@+id/travell_history"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/travell_history"
+        tools:layout_editor_absoluteY="448dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
