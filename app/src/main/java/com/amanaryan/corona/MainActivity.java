@@ -1,10 +1,12 @@
 package com.amanaryan.corona;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -62,8 +64,17 @@ public class MainActivity extends AppCompatActivity {
         suspect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "We are working on it", Toast.LENGTH_SHORT).show();
-            }
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Are you sure?")
+                        .setMessage("Be careful..! If you found blaming somebody then, authorities will take action on you. But don't worry if u are right just click OK and help us fight COVID-19")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(getApplicationContext(), Suspect.class));
+                            }
+                        }).setNegativeButton("CANCEL",null);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();            }
         });
 
         contactus.setOnClickListener(new View.OnClickListener() {

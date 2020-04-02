@@ -14,8 +14,7 @@
         android:roundIcon="@drawable/iconn"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".newsbox.WebNews"></activity>
-        <activity android:name=".newsbox.Newslist" />
+        <activity android:name=".Suspect"></activity>
         <activity android:name=".Aboutus" />
         <activity android:name=".Feedback" />
         <activity android:name=".Helpus" />
