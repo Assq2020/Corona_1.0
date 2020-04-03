@@ -24,7 +24,9 @@ class Helpus : AppCompatActivity() {
             startActivityForResult(intent,0)
         }
         submit_btn_help.setOnClickListener {
-            Toast.makeText(this,"you have to code for saving this on firebase",Toast.LENGTH_SHORT).show()
+            val intent=Intent(this,Resistrationform::class.java)
+            startActivity(intent)
+            //Toast.makeText(this,"you have to code for saving this on firebase",Toast.LENGTH_SHORT).show()
         }
     }
     var selected_photo_uri: Uri? =null
