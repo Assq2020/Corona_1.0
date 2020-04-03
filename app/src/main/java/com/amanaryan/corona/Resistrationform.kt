@@ -23,7 +23,7 @@ class Resistrationform : AppCompatActivity() {
         val stateSpin = findViewById<Spinner>(R.id.state_adres_et_resister)
         val occupation=findViewById<Spinner>(R.id.occupation_resister)
 
-        val states=arrayOf("Select Occupation","Uttar Pradesh","Maharashtra","Bihar","West Bengal","Madhya Pradesh","Tamil Nadu","Retailer","Rajasthan","Karnataka","Gujarat","Andhra Pradesh","Odisha","Telangana","Jharkhand","Assam","Punjab", "Kerala","Chhattisgarh","Haryana","Uttarakhand","Himachal Pradesh","Tripura","Meghalaya","Manipur","Nagaland","Goa","Arunachal Pradesh","Mizoram","Sikkim","Delhi","Jammu and Kashmir","Puducherry","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Andaman and Nicobar Islands","Ladakh", "Lakshadweep")
+        val states=arrayOf("Select Occupation","Uttar Pradesh","Maharashtra","Bihar","West Bengal","Madhya Pradesh","Tamil Nadu","Rajasthan","Karnataka","Gujarat","Andhra Pradesh","Odisha","Telangana","Jharkhand","Assam","Punjab", "Kerala","Chhattisgarh","Haryana","Uttarakhand","Himachal Pradesh","Tripura","Meghalaya","Manipur","Nagaland","Goa","Arunachal Pradesh","Mizoram","Sikkim","Delhi","Jammu and Kashmir","Puducherry","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Andaman and Nicobar Islands","Ladakh", "Lakshadweep")
 
         val statesarrAdp= ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,states)
         stateSpin.adapter=statesarrAdp
