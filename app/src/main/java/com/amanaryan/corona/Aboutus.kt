@@ -9,11 +9,11 @@ class Aboutus : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_aboutus)
-        toast()
+//        toast()
     }
-    fun toast(){
-
-        Toast.makeText(this,"Toast aaya Toast aaya",Toast.LENGTH_LONG).show()
-
-    }
+//    fun toast(){
+//
+//        Toast.makeText(this,"Toast aaya Toast aaya",Toast.LENGTH_LONG).show()
+//
+//    }
 }
