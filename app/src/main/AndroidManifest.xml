@@ -2,11 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.amanaryan.corona">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-<!--<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>-->
     <application
         android:allowBackup="true"
         android:icon="@drawable/iconn"
@@ -14,13 +9,16 @@
         android:roundIcon="@drawable/iconn"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Suspect"></activity>
+        <activity android:name=".User_RegistrationForm"
+            android:noHistory="true"/>
+        <activity android:name=".Suspect" />
         <activity android:name=".Aboutus" />
+        <activity android:name=".newsbox.Newslist" />
+        <activity android:name=".newsbox.WebNews" />
         <activity android:name=".Feedback" />
         <activity android:name=".Helpus" />
         <activity android:name=".Connectus" />
         <activity android:name=".Contactus" />
-        <activity android:name=".RegisrationForm" />
         <activity android:name=".Emergency" />
         <activity android:name=".tipsDescribe" />
         <activity
@@ -47,5 +45,10 @@
         </activity>
         <activity android:name=".MainActivity" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

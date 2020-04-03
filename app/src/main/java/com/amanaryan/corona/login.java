@@ -164,7 +164,7 @@ private FirebaseAuth mAuth;
 
                             conn.execSQL("insert into Login values("+"'"+yes+"'"+","+"'"+phnumber+"'"+");");
                             Toast.makeText(login.this, "Login Successful", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(),RegisrationForm.class).putExtra("phnumber",phnumber));
+                            startActivity(new Intent(getApplicationContext(),User_RegistrationForm.class).putExtra("phnumber",phnumber));
 
                         }else{
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException){
