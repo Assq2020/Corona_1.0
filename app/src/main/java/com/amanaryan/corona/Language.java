@@ -53,8 +53,6 @@ String yes="YES";
 
         Cursor c = conn.rawQuery("select * from Login where user="+"'"+yes+"'"+"", null);
         if (c.moveToFirst()) {
-//            Uname=c.getString(1);
-//            Uemail=c.getString(2);
             pnumber = c.getString(1);
             Toast.makeText(Language.this, " checked", Toast.LENGTH_LONG).show();
 

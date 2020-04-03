@@ -30,7 +30,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.amanaryan.translateapi.TranslateAPI;
+
+import com.amanaryan.corona.newsbox.Newslist;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -70,14 +71,13 @@ public class MainActivity extends AppCompatActivity {
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "We are working on it", Toast.LENGTH_SHORT).show();
-            }
+    startActivity(new Intent(getApplicationContext(), Newslist.class));        }
         });
 
         suspect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "We are working on it", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),Suspect.class));
             }
         });
 
@@ -90,21 +90,25 @@ public class MainActivity extends AppCompatActivity {
 
 
         Assessment = findViewById(R.id.Assessment);
+        final int enddate=20,startdate=5;
+        //end date sqldb se niklna h start date v
+
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat sdfD=new SimpleDateFormat("dd");
+        final int date= Integer.parseInt(sdfD.format(new Date()));
         Assessment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), com.amanaryan.corona.Assessment.class));
+                if(date==enddate || date<startdate|| enddate<date ){
+                    startActivity(new Intent(getApplicationContext(), com.amanaryan.corona.Assessment.class));}else{
+                   int sub= enddate-date;
+                    Toast.makeText(MainActivity.this, "You can Access this after "+sub+" Days", Toast.LENGTH_LONG).show();
+                }
             }
         });
         //Tips ActivityStart
         checkhealth();
 
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-        String date = sdf.format(new Date());
-        // int endMONTH=(date.charAt(3)*10)+date.charAt(4);
-
-        //   Toast.makeText(this, "hi "+endMONTH+"  "+date, Toast.LENGTH_LONG).show();
         Wcorona = findViewById(R.id.what_is_Coronavirus);
         Symptoms = findViewById(R.id.What_are_symptoms);
         transmitted = findViewById(R.id.How_it_is_transmitted);

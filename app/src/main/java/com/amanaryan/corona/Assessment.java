@@ -38,7 +38,7 @@ public class Assessment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment);
 
-
+//sqldb se start or end date update kro 0 se
 
 
         @SuppressLint("SimpleDateFormat")
