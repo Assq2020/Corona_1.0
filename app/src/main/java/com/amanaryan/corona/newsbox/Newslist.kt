@@ -4,7 +4,9 @@ import android.content.ClipData
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.amanaryan.corona.R
 import com.google.firebase.database.DataSnapshot
@@ -16,6 +18,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.activity_newslist.*
 import kotlinx.android.synthetic.main.news_row.view.*
+import kotlinx.android.synthetic.main.placeholder.*
 
 class Newslist : AppCompatActivity() {
 
@@ -23,7 +26,7 @@ class Newslist : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_newslist)
         fetchNews()
-
+         shimer_layout.startShimmerAnimation()
         }
     companion object {
         val USER_KEY = "USER_KEY"
@@ -42,7 +45,11 @@ class Newslist : AppCompatActivity() {
                     val news = it.getValue(News::class.java)
                     Log.d("fetch news","fire base work ${news?.link}")
                     if (news != null) {
+                        Handler().postDelayed( {
+                            shimer_layout.stopShimmerAnimation()
+                            shimer_layout.visibility = View.GONE
 
+                        },0)
                         adapter.add(NewsAdaptor(news))
                     }
 
