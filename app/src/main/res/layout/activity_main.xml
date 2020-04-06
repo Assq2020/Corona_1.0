@@ -118,6 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:columnCount="2"
+                    android:background="@drawable/login_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/qqq">
@@ -125,6 +126,8 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/Assessment"
                         android:layout_width="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_height="150dp"
                         android:layout_margin="10dp">
 
@@ -147,6 +150,8 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/RestrictedAreaid"
                         android:layout_width="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_height="150dp"
                         android:layout_margin="10dp">
 
@@ -171,6 +176,8 @@
                         android:id="@+id/emergencyy"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -195,6 +202,8 @@
                         android:id="@+id/suspect"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -219,6 +228,8 @@
                         android:id="@+id/doctorsId"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -243,6 +254,8 @@
                         android:id="@+id/foodshopId"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -266,6 +279,8 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/news"
                         android:layout_width="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_height="150dp"
                         android:layout_margin="10dp">
 
@@ -291,6 +306,8 @@
                         android:id="@+id/contactus"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -417,6 +434,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:columnCount="2"
+                    android:background="@drawable/login_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/te">
@@ -426,7 +444,9 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle">
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
+                        android:background="@color/Grey">
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="100dp"
                             android:layout_marginTop="10dp"
@@ -449,7 +469,9 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle" >
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
+                        android:background="@color/Grey" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -474,6 +496,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -500,6 +524,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -525,6 +551,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -550,6 +578,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -575,6 +605,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -600,6 +632,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView

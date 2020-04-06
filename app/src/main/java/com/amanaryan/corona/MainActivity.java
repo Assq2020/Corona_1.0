@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Assessment = findViewById(R.id.Assessment);
-        final int enddate=20,startdate=5;
+        final int enddate=20,startdate=8;
         //end date sqldb se niklna h start date v
 
         @SuppressLint("SimpleDateFormat")
