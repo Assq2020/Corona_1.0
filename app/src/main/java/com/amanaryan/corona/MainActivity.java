@@ -1,5 +1,6 @@
 package com.amanaryan.corona;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -8,6 +9,9 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,6 +21,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Network;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     double userLongitude,userGpslongi;
     private static final int My_permission_request_code = 1;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -286,8 +292,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ShowToast")
-    private void checkhealth() {
+    public  void checkhealth() {
 
         SQLiteDatabase conn = openOrCreateDatabase("db", MODE_PRIVATE, null);
         //   conn.execSQL("create table if not exists cardcolor(name varchar,age int,mobile int,aadhar varchar,address varchar,phealthissue varchar,ptraveldetail,color varchar,startdate varchar,enddate varchar);");
@@ -313,7 +320,8 @@ public class MainActivity extends AppCompatActivity {
 if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
 
 
-    getGPSLocation();
+
+    sendgpsinBackground();
 }
 
         } else {
@@ -346,6 +354,30 @@ if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
 // }
 
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void sendgpsinBackground() {
+        ComponentName componentName= new ComponentName(this,Service.class);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+            @SuppressLint("WrongConstant")
+                     JobInfo jobInfo= new JobInfo.Builder(123,componentName)
+                    .setRequiredNetworkType(JobInfo.NETWORK_TYPE_CELLULAR)
+                    .setPersisted(true)
+                    .setPeriodic(15*60*1000)
+                    .build();
+
+            JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
+            int resultcode=scheduler.schedule(jobInfo);
+            if(resultcode==JobScheduler.RESULT_SUCCESS){
+                Toast.makeText(this, "Scheduled to send location", Toast.LENGTH_SHORT).show();
+            }else {     Toast.makeText(this, "Scheduled OFF", Toast.LENGTH_SHORT).show();
+            }
+        }else{getGPSLocation();}
+
+//        for job cancle only doctors can do so
+//        JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
+//        scheduler.cancel(123);
     }
 
     public void getGPSLocation() {

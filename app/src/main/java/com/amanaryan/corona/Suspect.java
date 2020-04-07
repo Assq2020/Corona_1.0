@@ -30,8 +30,8 @@ public class Suspect extends AppCompatActivity {
         doubt = (EditText)findViewById(R.id.doubt);
         gender = (RadioGroup)findViewById(R.id.gender);
         submit = (Button)findViewById(R.id.submit);
-
-        //setting Onclick listener to submit button
+//        new notification();
+//        //setting Onclick listener to submit button
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
