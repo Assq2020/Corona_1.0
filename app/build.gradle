@@ -2,10 +2,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
 androidExtensions {
 
     experimental = true
 
+}
+android {
+    dataBinding {
+        enabled = true
+    }
 }
 
 android {
@@ -46,6 +52,6 @@ dependencies {
     implementation project(':translateapi')
     implementation "com.xwray:groupie:2.7.0"
     implementation "com.xwray:groupie-kotlin-android-extensions:2.7.0"
-
+    implementation 'com.facebook.shimmer:shimmer:0.1.0'
 
 }

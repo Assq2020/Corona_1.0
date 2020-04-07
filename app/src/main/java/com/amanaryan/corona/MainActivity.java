@@ -1,5 +1,6 @@
 package com.amanaryan.corona;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -8,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -77,7 +79,18 @@ public class MainActivity extends AppCompatActivity {
         suspect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Suspect.class));
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Are you sure?")
+                        .setMessage("Be careful..! If you found blaming somebody then, authorities will take action on you. But don't worry if u are right just click OK and help us fight COVID-19")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(getApplicationContext(), Suspect.class));
+                            }
+                        }).setNegativeButton("CANCEL",null);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 
@@ -90,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Assessment = findViewById(R.id.Assessment);
-        final int enddate=20,startdate=9;
+        final int enddate=20,startdate=8;
         //end date sqldb se niklna h start date v
 
         @SuppressLint("SimpleDateFormat")

@@ -10,6 +10,7 @@
         android:id="@+id/Otplay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/login_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +77,7 @@
         android:id="@+id/phonelay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/login_otp_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,36 +129,38 @@
         android:id="@+id/progressbarLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@drawable/login_otp_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="250dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="15dp"
                 android:text="@string/loading"
                 android:textColor="#00bbff"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:layout_margin="15dp"
 
                 />
 
             <ProgressBar
                 android:layout_width="wrap_content"
-        android:layout_margin="15dp"
                 android:layout_height="wrap_content"
-        />
+                android:layout_margin="15dp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

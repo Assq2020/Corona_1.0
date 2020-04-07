@@ -28,36 +28,97 @@
     android:id="@+id/qqq"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:paddingTop="15dp"
-    android:paddingRight="30dp"
-    android:paddingLeft="30dp"
+    android:paddingRight="25dp"
+    android:paddingLeft="25dp"
+    android:orientation="horizontal"
     android:paddingBottom="10dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/flipper">
-    <TextView
-        android:id="@+id/lines"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Only together We can"
-        android:textColor="#00bbff"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:gravity="center"/>
-    <TextView
+
+   <LinearLayout
+       android:id="@+id/cases_layout"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="left"
+       android:orientation="vertical">
+
+       <TextView
+           android:id="@+id/totalcases_home_tv"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Totol casses"
+           android:textColor="#00bbff"
+           android:textSize="12sp"
+           android:layout_gravity="left"
+           />
+       <TextView
+           android:id="@+id/total_value_tv"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="2,567"
+           android:textColor="@android:color/black"
+           android:layout_gravity="center"/>
+   </LinearLayout>
+    <LinearLayout
+        android:id="@+id/death"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="- Sandeep"
-        android:textColor="#00bbff"
-        android:textStyle="italic"
-        android:layout_gravity="end"/>
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/total_death"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Totol Death"
+            android:textColor="#00bbff"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+           />
+        <TextView
+            android:id="@+id/death_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="72"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/recover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/recover_home_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Totol Recover"
+            android:textColor="#00bbff"
+            android:textSize="12sp"
+            android:layout_gravity="right"
+            />
+        <TextView
+            android:id="@+id/recover_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="192"
+            android:paddingLeft="8dp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"/>
+    </LinearLayout>
 </LinearLayout>
 
                 <GridLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:columnCount="2"
+                    android:background="@drawable/login_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/qqq">
@@ -65,6 +126,8 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/Assessment"
                         android:layout_width="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_height="150dp"
                         android:layout_margin="10dp">
 
@@ -87,6 +150,8 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/RestrictedAreaid"
                         android:layout_width="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_height="150dp"
                         android:layout_margin="10dp">
 
@@ -111,6 +176,8 @@
                         android:id="@+id/emergencyy"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -135,6 +202,8 @@
                         android:id="@+id/suspect"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -159,6 +228,8 @@
                         android:id="@+id/doctorsId"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -183,6 +254,8 @@
                         android:id="@+id/foodshopId"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -206,6 +279,8 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/news"
                         android:layout_width="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_height="150dp"
                         android:layout_margin="10dp">
 
@@ -231,6 +306,8 @@
                         android:id="@+id/contactus"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:elevation="6dp"
+                        app:cardCornerRadius="25dp"
                         android:layout_margin="10dp">
 
                         <ImageView
@@ -357,6 +434,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:columnCount="2"
+                    android:background="@drawable/login_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/te">
@@ -366,7 +444,9 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle">
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
+                        android:background="@color/Grey">
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="100dp"
                             android:layout_marginTop="10dp"
@@ -389,7 +469,9 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
-                        android:background="@drawable/greycircle" >
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
+                        android:background="@color/Grey" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -414,6 +496,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -440,6 +524,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -465,6 +551,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -490,6 +578,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -515,6 +605,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -540,6 +632,8 @@
                         android:layout_width="150dp"
                         android:layout_height="250dp"
                         android:layout_margin="15dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="25dp"
                         android:background="@drawable/greycircle" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
