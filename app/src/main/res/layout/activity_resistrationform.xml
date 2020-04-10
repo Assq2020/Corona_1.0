@@ -77,8 +77,9 @@
             android:layout_width="123dp"
             android:layout_height="match_parent"
             android:layout_marginStart="40dp"
-            android:hint="Sex"
-            android:inputType="number" />
+            android:hint="Gender"
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
 
 
     </LinearLayout>
@@ -131,8 +132,8 @@
         android:id="@+id/health_history_res"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="Health History"
         android:layout_marginTop="10dp"
+        android:hint="Health History"
         app:layout_constraintEnd_toEndOf="@+id/addres_layout"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/addres_layout"
