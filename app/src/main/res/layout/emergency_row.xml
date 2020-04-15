@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    android:clickable="true"
+    android:layout_margin="8dp"
+    android:layout_height="70dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/state_name"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="Authorized persion no :"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/state_no_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="20sp"
+            android:text="Authentic persion no"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="@+id/state_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/state_name"
+            app:layout_constraintTop_toBottomOf="@+id/state_name" />
+
+        <ImageView
+            android:id="@+id/row_call"
+            android:layout_width="40dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_call_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.887"
+
+            app:layout_constraintStart_toStartOf="@+id/state_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
