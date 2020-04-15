@@ -25,17 +25,24 @@ public class User_RegistrationForm extends AppCompatActivity {
     //stateWise Districts Data
     String[] no_option_selected = {"--Select District--"};
     String[] districtsOf_Andaman = {"--Select District--", "1", "1", "1", "1", "1"};
-    String[] districtsOf_Andhra = {"--Select District--", "2", "2", "2", "2", "2"};
-    String[] districtsOf_Arunachal = {"--Select District--", "3", "3"};
-    String[] districtsOf_Assam = {"--Select District--", "4", "4"};
-    String[] districtsOf_Bihar = {"--Select District--", "5", "5"};
+    String[] districtsOf_Andhra = {"--Select District--", "Anantapur", "Chittoor", "East Godavari", "Guntur", "Krishna","Kurnool","Prakasam","Srikakulam","Sri Potti Sriramulu Nellore","Visakhapatnam","Vizianagaram","West Godavari","Kadapa (Cuddapah)"};
+    String[] districtsOf_Arunachal = {"--Select District--", " Anjaw", "Changlang","Dibang Valley","East Kameng","East Siang"," Kamle","Kra Daadi","Kurung Kumey","Lepa Rada","Lohit","Longding","Lower Dibang Valley","Lower Siang","Lower Subansiri","Namsai","Pakke Kessang","Papum Pare","Shi Yomi","Siang","Tawang","Tirap","Upper Siang","Upper Subansiri","West Kameng","West Siang"};
+  /*
+     */
+    String[] districtsOf_Assam = {"--Select District--", "Baksa", "Barpeta","Biswanath","Bongaigaon","Cachar","Charaideo","Chirang","Darrang","Dhemaji","Dhubri","Dibrugarh"," Dima Hasao (North Cachar Hills)","Goalpara","Golaghat"," Hailakandi","Hojai","Jorhat","Kamrup","Kamrup Metropolitan","Karbi Anglong","Karimganj","Kokrajhar","Lakhimpur","Majuli","Morigaon","Nagaon","Nalbari","Sivasagar","Sonitpur","South Salamara-Mankachar","Tinsukia","Udalguri","West Karbi Anglong"};
+    String[] districtsOf_Bihar = {"--Select District--", "Araria", "Arwal","Aurangabad","Banka"," Begusarai","Bhagalpur","Bhojpur","Buxar","Darbhanga","East Champaran (Motihari)","Gaya","Gopalganj","Jamui","Jehanabad","Kaimur (Bhabua)","Katihar","Khagaria","Kishanganj","Kishanganj","Lakhisarai","Madhepura","Madhubani","Munger (Monghyr)","Muzaffarpur","Nalanda","Nawada","PatnaPatna","Purnia (Purnea)","Rohtas","Saharsa","Samastipur","Saran","Sheikhpura","Sheohar","Sitamarhi","Siwan","Supaul","Vaishali","West Champaran"};
+
     String[] districtsOf_Chandigarh = {"--Select District--", "6", "6"};
-    String[] districtsOf_Chhattisgarh = {"--Select District--", "7", "7"};
-    String[] districtsOf_Dadra = {"--Select District--", "8", "8"};
-    String[] districtsOf_Daman = {"--Select District--", "9", "9"};
-    String[] districtsOf_Delhi = {"--Select District--", "10", "10"};
-    String[] districtsOf_Goa = {"--Select District--", "11", "11"};
-    String[] districtsOf_Gujarat = {"--Select District--", "12", "12"};
+    String[] districtsOf_Chhattisgarh = {"--Select District--", "Balod", "Baloda Bazar","Balrampur"," Bastar","Bemetara","Bijapur","Bilaspur","Dantewada (South Bastar)","Dhamtari","Durg","Gariyaband","Janjgir-Champa","Jashpur","Kabirdham (Kawardha)","Kanker (North Bastar)","Kondagaon","Korba","Korea (Koriya)","Mahasamund","Mungeli","Narayanpur","Raigarh","Raipur","Rajnandgaon","Sukma","Surajpur","Surguja"};
+    String[] districtsOf_Dadra = {"--Select District--", "Dadra And Nagar Haveli"};
+    String[] districtsOf_Daman = {"--Select District--", "Daman", " Diu"};
+    String[] districtsOf_Delhi = {"--Select District--", "Central Delhi", "East Delhi","New Delhi","North Delhi","North East Delhi","North West Delhi","Shahdara","South Delhi","South East Delhi","South West Delhi","West Delhi"};
+
+    String[] districtsOf_Goa = {"--Select District--", "North Goa", "1South Goa"};
+    String[] districtsOf_Gujarat = {"--Select District--", "Ahmedabad", "Amreli","Anand","Aravalli","Banaskantha (Palanpur)","Bharuch","Bhavnagar","Botad","Chhota Udepur","Dahod","Dangs (Ahwa)","Devbhoomi Dwarka","Gandhinagar","Gir Somnath","Junagadh","Jamnagar","Kachchh","Kheda (Nadiad)","Mahisagar","Mehsana","Morbi","Narmada (Rajpipla)","Navsari","Panchmahal (Godhra)","Patan","Porbandar","Rajkot","Sabarkantha (Himmatnagar)","Surat","Surendranagar","Tapi (Vyara)","Vadodara","Valsad"};
+
+
+
     String[] districtsOf_Haryana = {"--Select District--", "13", "13"};
     String[] districtsOf_Himachal = {"--Select District--", "14", "14"};
     String[] districtsOf_Jammu = {"--Select District--", "15", "15"};
@@ -85,7 +92,6 @@ public class User_RegistrationForm extends AppCompatActivity {
                     Toast.makeText(parent.getContext(), selectedOccupation, Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 

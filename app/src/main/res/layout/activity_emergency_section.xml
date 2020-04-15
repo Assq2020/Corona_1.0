@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmergencySection">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/auth_persion_cv"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/auth_persion_name"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:text="Jharkhand Covid19 Helpline:"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/auth_no_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="1075"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/auth_persion_name"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/auth_persion_name"
+                app:layout_constraintTop_toBottomOf="@+id/auth_persion_name" />
+
+            <ImageView
+                android:id="@+id/auth_call"
+                android:layout_width="40dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_call_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.887"
+
+                app:layout_constraintStart_toStartOf="@+id/auth_persion_name"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/doctor_persion_cv"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@id/auth_persion_cv"
+
+        app:layout_constraintStart_toStartOf="@+id/auth_persion_cv"
+        app:layout_constraintTop_toBottomOf="@+id/auth_persion_cv">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/doctor_persion_tv"
+                android:layout_width="187dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:text="R.M.C.H Emergency"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/doctor_no_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="230155"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/doctor_persion_tv"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/doctor_persion_tv"
+                app:layout_constraintTop_toBottomOf="@+id/doctor_persion_tv" />
+
+            <ImageView
+                android:id="@+id/doctor_call"
+                android:layout_width="40dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_call_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.894"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/helpline_persion_cv"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/doctor_persion_cv"
+        app:layout_constraintTop_toBottomOf="@+id/doctor_persion_cv"
+        app:layout_constraintEnd_toEndOf="@+id/doctor_persion_cv">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/helpline_persion_tv"
+                android:layout_width="187dp"
+                android:layout_height="20dp"
+
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:text="RACHI MUNICIPAL CORPORATION:"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/helpline_no_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="+91-651-2211215"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="@+id/helpline_persion_tv"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/helpline_persion_tv"
+                app:layout_constraintTop_toBottomOf="@+id/helpline_persion_tv" />
+
+            <ImageView
+                android:id="@+id/helpline_call"
+                android:layout_width="40dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_call_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.894"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+    <ScrollView
+        android:id="@+id/scrol_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpline_persion_cv">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleview_emergency_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

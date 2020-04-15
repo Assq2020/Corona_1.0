@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         emergency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Emergency.class));
+                startActivity(new Intent(getApplicationContext(), EmergencySection.class));
             }
         });
 
