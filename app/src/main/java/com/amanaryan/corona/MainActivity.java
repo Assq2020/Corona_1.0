@@ -1,5 +1,6 @@
 package com.amanaryan.corona;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +40,11 @@ import android.widget.ViewFlipper;
 
 
 import com.amanaryan.corona.newsbox.Newslist;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,6 +53,7 @@ import static com.amanaryan.corona.Language.ChooseLanguage;
 
 public class MainActivity extends AppCompatActivity {
     String healthcolor;
+    boolean gpsint_value;
     ConstraintLayout home, tips;
     TextView homeInactive, homeActive, tipsInactive, tipsActive;
     ImageView profilebtn;
@@ -55,16 +62,23 @@ public class MainActivity extends AppCompatActivity {
     //Tips Activity
     CardView Wcorona, Symptoms, transmitted, prevent, Mask, Treatment, Travel, fakenews;
     private LocationManager locationManager;
-    private LocationListener locationListener,llocationListener;
-    double userLatitude,userGpslati;
-    double userLongitude,userGpslongi;
+    private LocationListener locationListener, llocationListener;
+    double userLatitude, userGpslati;
+    double userLongitude, userGpslongi;
     private static final int My_permission_request_code = 1;
-
+int edate=0;
+    int sdate=0;
+    String uname;
+    String ustate;
+    String ucity;
+    double longitude;
+    double latitude;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        requireddate();
         emergency = findViewById(R.id.emergencyy);
         news = findViewById(R.id.news);
         suspect = findViewById(R.id.suspect);
@@ -79,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-    startActivity(new Intent(getApplicationContext(), Newslist.class));        }
+                startActivity(new Intent(getApplicationContext(), Newslist.class));
+            }
         });
 
         suspect.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 startActivity(new Intent(getApplicationContext(), Suspect.class));
                             }
-                        }).setNegativeButton("CANCEL",null);
+                        }).setNegativeButton("CANCEL", null);
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
             }
@@ -109,20 +124,28 @@ public class MainActivity extends AppCompatActivity {
 
 
         Assessment = findViewById(R.id.Assessment);
-        final int enddate=20,startdate=8;
-        //end date sqldb se niklna h start date v
+
+
 
         @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat sdfD=new SimpleDateFormat("dd");
-        final int date= Integer.parseInt(sdfD.format(new Date()));
+        SimpleDateFormat sdfD = new SimpleDateFormat("dd");
+        final int date = Integer.parseInt(sdfD.format(new Date()));
         Assessment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(date==enddate || date<startdate|| enddate<date ){
-                    startActivity(new Intent(getApplicationContext(), com.amanaryan.corona.Assessment.class));}else{
-                   int sub= enddate-date;
-                    Toast.makeText(MainActivity.this, "You can Access this after "+sub+" Days", Toast.LENGTH_LONG).show();
+
+                if(edate==0 || sdate==0){       startActivity(new Intent(getApplicationContext(), com.amanaryan.corona.Assessment.class));
                 }
+                else{
+                    final int enddate = edate, startdate = sdate;
+
+                    if (date == enddate || date < startdate || enddate < date) {
+                    startActivity(new Intent(getApplicationContext(), com.amanaryan.corona.Assessment.class));
+                } else {
+                    int sub = enddate - date;
+                    Toast.makeText(MainActivity.this, "You can Access this after " + sub + " Days", Toast.LENGTH_LONG).show();
+                }
+            }
             }
         });
         //Tips ActivityStart
@@ -292,9 +315,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void requireddate() {
+
+
+
+            SQLiteDatabase conn = openOrCreateDatabase("db", MODE_PRIVATE, null);
+            conn.execSQL("create table if not exists detail(name varchar,aadhar varchar,age varchar,sex varchar,mobile varchar,email varchar," +
+                    "occupation varchar,state varchar,city varchar,address varchar,healthhistory varchar,travelhistory varchar,latitude varchar,longitude varchar," +
+                    "cardcolor varchar,percentage varchar,dvist varchar,startdate int,enddate int,puredate varchar);");
+//0 to 19
+
+            Cursor c= conn.rawQuery("select * from detail",null);
+
+
+            if(c.moveToFirst()){
+                uname=c.getString(0);
+                ustate=c.getString(7);
+                ucity=c.getString(8);
+            }
+
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ShowToast")
-    public  void checkhealth() {
+    public void checkhealth() {
 
         SQLiteDatabase conn = openOrCreateDatabase("db", MODE_PRIVATE, null);
         //   conn.execSQL("create table if not exists cardcolor(name varchar,age int,mobile int,aadhar varchar,address varchar,phealthissue varchar,ptraveldetail,color varchar,startdate varchar,enddate varchar);");
@@ -311,18 +355,17 @@ public class MainActivity extends AppCompatActivity {
 //            int enddd=(enddate.charAt(0)*10)+enddate.charAt(1);
 
 
-
 //            int todaymonth=(date.charAt(3)*10)+date.charAt(4);
 //            int todaydd=(date.charAt(0)*10)+date.charAt(1);
 //            if(endMONTH==todaymonth){
 //            if(enddd<=todaydd){
 //                recheck and update color of card
-if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
+            if (healthcolor.equals("Yellow") || healthcolor.equals("Red")) {
 
 
-
-    sendgpsinBackground();
-}
+                getGPSLocation();
+//    sendgpsinBackground();
+            }
 
         } else {
             please_move_selfAssingment();
@@ -358,22 +401,27 @@ if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void sendgpsinBackground() {
-        ComponentName componentName= new ComponentName(this,Service.class);
+        @SuppressLint("JobSchedulerService")
+        ComponentName componentName = new ComponentName(this, Service.class);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
             @SuppressLint("WrongConstant")
-                     JobInfo jobInfo= new JobInfo.Builder(123,componentName)
+            JobInfo jobInfo = new JobInfo.Builder(123, componentName)
                     .setRequiredNetworkType(JobInfo.NETWORK_TYPE_CELLULAR)
                     .setPersisted(true)
-                    .setPeriodic(15*60*1000)
+                    .setPeriodic(15 * 60 * 1000)
                     .build();
 
-            JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
-            int resultcode=scheduler.schedule(jobInfo);
-            if(resultcode==JobScheduler.RESULT_SUCCESS){
+            JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+            assert scheduler != null;
+            int resultcode = scheduler.schedule(jobInfo);
+            if (resultcode == JobScheduler.RESULT_SUCCESS) {
                 Toast.makeText(this, "Scheduled to send location", Toast.LENGTH_SHORT).show();
-            }else {     Toast.makeText(this, "Scheduled OFF", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Scheduled OFF", Toast.LENGTH_SHORT).show();
             }
-        }else{getGPSLocation();}
+        } else {
+            getGPSLocation();
+        }
 
 //        for job cancle only doctors can do so
 //        JobScheduler scheduler=(JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
@@ -389,13 +437,13 @@ if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
             @Override
             public void onLocationChanged(Location location) {
 
-                userGpslongi= location.getLongitude();
-                userGpslati= location.getLatitude();
+                userGpslongi = location.getLongitude();
+                userGpslati = location.getLatitude();
                 sendGPSLocation();
 
                 Toast.makeText(MainActivity.this, "GPS send", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(MainActivity.this, "GPS send"+userGpslati+" "+userGpslongi, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "GPS send" + userGpslati + " " + userGpslongi, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -408,6 +456,7 @@ if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
             public void onProviderEnabled(String provider) {
 //                Toast.makeText(MainActivity.this, "gps On", Toast.LENGTH_SHORT).show();
 ////
+                gpsint_value=false;
             }
 
             @Override
@@ -415,6 +464,7 @@ if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
 
                 Toast.makeText(MainActivity.this, "gps OFFFFFFFFF", Toast.LENGTH_SHORT).show();
                 TurnonGps();
+                gpsint_value=true;
 
             }
         };llocationListener = new LocationListener() {
@@ -468,7 +518,8 @@ if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
             return;
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000,0,locationListener);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,3000,0,llocationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 3000, 0, llocationListener);
+
     }
 
 
@@ -497,12 +548,49 @@ if (healthcolor.equals("Yellow") || healthcolor.equals("Red")){
     }
 
     private void sendGPSLocation() {
-
+        longitude=userGpslongi;
+        latitude=userGpslati;
+        upload();
     }
 
     private void sendNetworklocation() {
-    }
+        if(gpsint_value){
+            longitude=userLongitude;
+            latitude=userLatitude;
+            upload();
 
+        }
+
+
+    }
+    private void upload() {
+        try {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            final DatabaseReference myRef = database.getReference("Data/"+ustate+"/"+ucity+"/"+healthcolor);
+
+            final Savegps value = new Savegps(longitude,latitude);
+
+
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    myRef.child(uname).child("Location").setValue(value);
+                    Toast.makeText(MainActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+
+        }catch (Exception e){
+            Toast.makeText(this,"NOt Uploaded :"+e,Toast.LENGTH_LONG).show();
+        }
+
+    }
 }
 
 

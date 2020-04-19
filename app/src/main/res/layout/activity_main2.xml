@@ -115,10 +115,67 @@
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                         <TextView
+                            android:id="@+id/profile_name"
                             android:layout_margin="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Name"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/profile_age"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/profile_aadhar"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/profile_mobile"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/profile_email"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/profile_add"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/profile_phh"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/profile_pth"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:textColor="#000000"
                             android:textSize="20sp" />
 
@@ -126,55 +183,6 @@
                             android:layout_margin="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Age"
-                            android:textColor="#000000"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="aadhar no."
-                            android:textColor="#000000"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="mobile no"
-                            android:textColor="#000000"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="address"
-                            android:textColor="#000000"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Previous Health History"
-                            android:textColor="#000000"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Previous travel history"
-                            android:textColor="#000000"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_margin="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="This page still under developed"
                             android:textColor="#000000"
                             android:textSize="20sp" />
                     </LinearLayout>

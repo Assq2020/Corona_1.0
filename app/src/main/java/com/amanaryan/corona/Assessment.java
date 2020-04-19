@@ -1,5 +1,6 @@
 package com.amanaryan.corona;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -15,12 +16,42 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Assessment extends AppCompatActivity {
     String health_card;
-    double percent;
+    String percentt;
+double percent;
+
+    String cardcolor;
+    String namee =" No ";
+    String aadharr = " No ";
+    String age = " No ";
+    String sex = " No ";
+    String mobile = " No ";
+    String emaill = " No ";
+    String occupation = " No ";
+    String state = " No ";
+    String city = " No ";
+    String addresss = " No ";
+    String healthhistory = " No ";
+    String travelhistory = " No ";
+    String latitude = "";
+    String longitude = "";
+    String dvisit = "";
+    String startdate = "";
+    String enddate = "";
+    String puredate = "";
+
+
+
     private EditText editText1;
     private Button start,button1,button2,button3,button4,button5,button6,button7,submit;
     private LinearLayout linearLayout1,linearLayout2,linearLayout3,linearLayout4,linearLayout5,linearLayout6,linearLayout7;
@@ -179,6 +210,7 @@ public class Assessment extends AppCompatActivity {
                 if (point<=5){
                     health_card="Green";
                     percent= point*6.5;
+updatecolor();
                     Toast.makeText(Assessment.this, "You Are Completely Safe", Toast.LENGTH_LONG).show();
 
                 }else if(point>5 && point<=11){
@@ -186,40 +218,17 @@ public class Assessment extends AppCompatActivity {
                     health_card="Yellow";
                     percent= point*6.5;
                     Toast.makeText(Assessment.this, "You Are At Low Risk", Toast.LENGTH_LONG).show();
-
+sendlocation();
                 }else{
                     health_card="Red";
                     percent= point*6.5;
                     Toast.makeText(Assessment.this, "You Are At High Risk", Toast.LENGTH_LONG).show();
+                    sendlocation();
                 }
 
 
 
 
-
-                SQLiteDatabase conn=openOrCreateDatabase("db",MODE_PRIVATE,null);
-                conn.execSQL("create table if not exists cardcolor(color varchar,percent varchar);");
-
-                Cursor c= conn.rawQuery("select * from cardcolor",null);
-
-
-                if(c.moveToFirst()){
-
-
-                    conn.execSQL("UPDATE  cardcolor  SET color="+"'"+health_card+"'"+",percent="+"'"+percent+"'"+"");
-                    Toast.makeText(Assessment.this, " Updated", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(),Main2Activity.class));
-
-
-                }else{
-                    //  conn.execSQL("create table if not exists cardcolor(name varchar,age int,mobile int,aadhar varchar,address varchar,phealthissue varchar,ptraveldetail,color varchar,startdate varchar,enddate varchar);");
-//0 to 9
-
-                    conn.execSQL("insert into cardcolor values("+"'"+health_card+"'"+","+"'"+percent+"'"+");");
-                    Toast.makeText(Assessment.this, " Data Saved", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(),Main2Activity.class));
-
-                }
 
 
 
@@ -248,6 +257,32 @@ public class Assessment extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+    private void updatecolor() {
+        SQLiteDatabase conn=openOrCreateDatabase("db",MODE_PRIVATE,null);
+        conn.execSQL("create table if not exists cardcolor(color varchar,percent varchar);");
+
+        Cursor c= conn.rawQuery("select * from cardcolor",null);
+
+
+        if(c.moveToFirst()){
+
+
+            conn.execSQL("UPDATE  cardcolor  SET color="+"'"+health_card+"'"+",percent="+"'"+percent+"'"+"");
+            Toast.makeText(Assessment.this, " Updated", Toast.LENGTH_SHORT).show();
+
+
+        }else{
+            //  conn.execSQL("create table if not exists cardcolor(name varchar,age int,mobile int,aadhar varchar,address varchar,phealthissue varchar,ptraveldetail,color varchar,startdate varchar,enddate varchar);");
+//0 to 9
+
+            conn.execSQL("insert into cardcolor values("+"'"+health_card+"'"+","+"'"+percent+"'"+");");
+            Toast.makeText(Assessment.this, " Data Saved", Toast.LENGTH_SHORT).show();
+
+        }
 
 
     }
@@ -384,4 +419,88 @@ public class Assessment extends AppCompatActivity {
                 break;
         }
     }
+
+
+    private void sendlocation() {
+        updatecolor();
+
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat sdfD = new SimpleDateFormat("dd");
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
+        final int ddate =0;// Integer.parseInt(sdf.format(new Date()));
+        final int sdate = Integer.parseInt(sdfD.format(new Date()));
+        int endddate=sdate+14;
+        if(endddate>30){endddate=endddate-30;}
+        SQLiteDatabase conn = openOrCreateDatabase("db", MODE_PRIVATE, null);
+        conn.execSQL("create table if not exists detail(name varchar,aadhar varchar,age varchar,sex varchar,mobile varchar,email varchar," +
+                "occupation varchar,state varchar,city varchar,address varchar,healthhistory varchar,travelhistory varchar,latitude varchar,longitude varchar," +
+                "cardcolor varchar,percentage varchar,dvist varchar,startdate int,enddate int,puredate varchar);");
+//0 to 19
+
+        conn.execSQL("UPDATE  detail  SET cardcolor="+"'"+health_card+"'"+",percentage="+"'"+percent+"'"+",startdate="+"'"+sdate+"'"+",enddate="+"'"+endddate+"'"+",puredate="+"'"+ddate+"'"+"");
+
+        Cursor c= conn.rawQuery("select * from detail",null);
+
+
+        if(c.moveToFirst()){
+            cardcolor=c.getString(14);
+            percentt= c.getDouble(15)+"";
+            namee =c.getString(0);
+            aadharr = c.getString(1);
+            age = c.getString(2);
+            sex = c.getString(3);
+            mobile = c.getString(4);
+            emaill = c.getString(5);
+            occupation = c.getString(6);
+            state = c.getString(7);
+            city = c.getString(8);
+            addresss = c.getString(9);
+            healthhistory = c.getString(10);
+            travelhistory = c.getString(11);
+            latitude = // gps
+                    longitude = //gps
+                            dvisit = c.getString(16);
+            startdate =sdate+"";
+            enddate = endddate+"";
+            puredate = ddate+"";
+
+upload();
+        }
+
+
+
+    }
+    private void upload() {
+        try {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            final DatabaseReference myRef = database.getReference("Data/"+state+"/"+city+"/"+cardcolor);
+
+            final Save value = new Save(namee,aadharr,age,sex,mobile,emaill,occupation,state,city,addresss,healthhistory,travelhistory,latitude,longitude,
+                    cardcolor,percentt,dvisit,startdate,enddate,puredate);
+
+
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    myRef.child(namee).child("Data").setValue(value);
+                    Toast.makeText(Assessment.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(Assessment.this, "Error", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+
+        }catch (Exception e){
+            Toast.makeText(this,"NOt Uploaded :"+e,Toast.LENGTH_LONG).show();
+        }
+        startActivity(new Intent(getApplicationContext(),Main2Activity.class));
+
+    }
+
+
 }

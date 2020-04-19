@@ -1,8 +1,12 @@
 package com.amanaryan.corona;
 
 import android.Manifest;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -20,6 +24,9 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+
+import java.util.Locale;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Service extends JobService {
@@ -172,5 +179,15 @@ System.out.println("Gps chnage");
 
     private void sendNetworklocation(){
 
-        System.out.println("Network chnage");}
+        System.out.println("Network chnage");
+
+        NotificationCompat.Builder builder= new NotificationCompat.Builder(this).setContentTitle("Gps h ye").setContentText("your location sended");
+
+        Intent noti=new Intent(this,MainActivity.class);
+        PendingIntent contentIntent=PendingIntent.getActivity(this,0,noti,PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        NotificationManager manager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0,builder.build());
+        }
 }

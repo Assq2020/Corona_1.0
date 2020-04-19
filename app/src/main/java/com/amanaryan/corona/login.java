@@ -76,7 +76,7 @@ private FirebaseAuth mAuth;
         MasterLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(),User_RegistrationForm.class));
             }
         });
 
@@ -164,8 +164,9 @@ private FirebaseAuth mAuth;
 
                             conn.execSQL("insert into Login values("+"'"+yes+"'"+","+"'"+phnumber+"'"+");");
                             Toast.makeText(login.this, "Login Successful", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(),User_RegistrationForm.class).putExtra("phnumber",phnumber));
-
+                           Intent i = new Intent(getApplicationContext(),User_RegistrationForm.class);
+                           i.putExtra("phnumber",phnumber);
+                           startActivity(i);
                         }else{
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException){
 

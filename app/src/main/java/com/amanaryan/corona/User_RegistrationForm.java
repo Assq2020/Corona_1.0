@@ -2,17 +2,27 @@ package com.amanaryan.corona;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Objects;
 
 
 public class User_RegistrationForm extends AppCompatActivity {
+    EditText name,age,aadhar,address,email,health,travel;
+
+
+
 
     String[] occupationspin = {"--Select Occupation--", "Doctor/Nurse/paramedic", "Police/Officer/Law Enforcement", "Delivery", "Chemist/Farmacy", "Wholesalar/Groceries", "Industry/Manufacturur", "Retailer", "None of these"};
     String[] genderspin = {"--Select Gender--", "Male", "Female", "Other"};
@@ -67,8 +77,9 @@ public class User_RegistrationForm extends AppCompatActivity {
     String[] districtsOf_Uttarakhand = {"--Select District--", "34", "34"};
     String[] districtsOf_UP = {"--Select District--", "35", "35"};
     String[] districtsOf_WB = {"--Select District--", "36", "36"};
+    String sexxx,occupationnn,stateee,cityyy,phnumber;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,9 +88,11 @@ public class User_RegistrationForm extends AppCompatActivity {
 //        String mobileNumber=getIntent().getExtras().getString("phnumber");
 //create db in cardcolor
         //by default start end pure date 0 se initialise hohga
+phnumber= Objects.requireNonNull(getIntent().getExtras()).getString("phnumber");
 
 
         //Occupation Spinner
+
         Spinner spinOccupation = (Spinner) findViewById(R.id.occupation_resister);
         ArrayAdapter<String> occupationAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, occupationspin);
         occupationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -87,9 +100,9 @@ public class User_RegistrationForm extends AppCompatActivity {
         spinOccupation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOccupation = parent.getItemAtPosition(position).toString();
-                if (selectedOccupation != "--Select Occupation--") {
-                    Toast.makeText(parent.getContext(), selectedOccupation, Toast.LENGTH_SHORT).show();
+                occupationnn = parent.getItemAtPosition(position).toString();
+                if (occupationnn != "--Select Occupation--") {
+                    Toast.makeText(parent.getContext(), occupationnn, Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
@@ -106,9 +119,9 @@ public class User_RegistrationForm extends AppCompatActivity {
         spinGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedGender = parent.getItemAtPosition(position).toString();
-                if (selectedGender != "--Select Gender--") {
-                    Toast.makeText(parent.getContext(), selectedGender, Toast.LENGTH_SHORT).show();
+                sexxx = parent.getItemAtPosition(position).toString();
+                if (!sexxx.equals("--Select Gender--")) {
+                    Toast.makeText(parent.getContext(), sexxx, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -119,6 +132,7 @@ public class User_RegistrationForm extends AppCompatActivity {
         });
 
 
+
         //State Spinner
         Spinner spinState = (Spinner) findViewById(R.id.state_adres_et_resister);
         ArrayAdapter<String> stateAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, statespin);
@@ -127,9 +141,9 @@ public class User_RegistrationForm extends AppCompatActivity {
         spinState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedState = parent.getItemAtPosition(position).toString();
-                if (selectedState != "--Select State/Union Territories--") {
-                    Toast.makeText(parent.getContext(), selectedState, Toast.LENGTH_SHORT).show();
+                stateee = parent.getItemAtPosition(position).toString();
+                if (!stateee.equals("--Select State/Union Territories--")) {
+                    Toast.makeText(parent.getContext(), stateee, Toast.LENGTH_SHORT).show();
                 }
                 districtSpinner(position);
             }
@@ -142,12 +156,21 @@ public class User_RegistrationForm extends AppCompatActivity {
 
 
         // Aman, ye aap likhe the pr yaha submit naam ka koi button nii h
-        findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
+        Button register=findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                create_User_DB();
             }
         });
+        name=findViewById(R.id.fullname_et_resistration);
+        email=findViewById(R.id.email_et_resistration);
+        address=findViewById(R.id.loca_adress_resister);
+        health=findViewById(R.id.health_history_res);
+        travel=findViewById(R.id.travel_history);
+        aadhar=findViewById(R.id.useraadharno);
+        age=findViewById(R.id.age_et_resister);
+
     }
 
     //Function for District Spinner
@@ -166,9 +189,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                        cityyy = parent.getItemAtPosition(position).toString();
+                        if (!cityyy.equals("--Select District--")) {
+                            Toast.makeText(parent.getContext(),  cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -185,9 +208,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                        cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -204,9 +227,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -223,9 +246,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -242,9 +265,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -261,9 +284,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -280,9 +303,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -299,9 +322,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -318,9 +341,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -337,9 +360,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -356,9 +379,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -375,9 +398,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -394,9 +417,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -413,9 +436,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -432,9 +455,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -451,9 +474,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -470,9 +493,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -489,9 +512,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -508,9 +531,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -527,9 +550,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                        cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -546,9 +569,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -565,9 +588,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -584,9 +607,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -603,9 +626,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -622,9 +645,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -641,9 +664,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -660,9 +683,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -679,9 +702,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -698,9 +721,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                        cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -717,9 +740,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -736,9 +759,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                        cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -755,9 +778,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -774,9 +797,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -793,9 +816,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -812,9 +835,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                         cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -831,9 +854,9 @@ public class User_RegistrationForm extends AppCompatActivity {
                 spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String selectedDistrict = parent.getItemAtPosition(position).toString();
-                        if (selectedDistrict != "--Select District--") {
-                            Toast.makeText(parent.getContext(), selectedDistrict, Toast.LENGTH_SHORT).show();
+                        cityyy = parent.getItemAtPosition(position).toString();
+                        if (cityyy != "--Select District--") {
+                            Toast.makeText(parent.getContext(), cityyy, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -851,36 +874,36 @@ public class User_RegistrationForm extends AppCompatActivity {
 
     //Function for User Database
     public void create_User_DB() {
-        String name = "";
-        int aadhar = 0;
-        int age = 0;
-        String sex = "";
-        int mobile = 0;
-        String email = "";
-        String occupation = "";
-        String state = "";
-        String city = "";
-        String address = "";
-        String healthhistory = "";
-        String travelhistory = "";
+        String namee =name.getText().toString();
+        String aadharr = aadhar.getText().toString();
+        String agee = age.getText().toString();
+        String sex = sexxx;
+        String mobile = phnumber;
+        String emaill = email.getText().toString();
+        String occupation = occupationnn;
+        String state = stateee;
+        String city = cityyy;
+        String addresss = address.getText().toString();
+        String healthhistory = health.getText().toString();
+        String travelhistory = travel.getText().toString();
         String latitude = "";
         String longitude = "";
         String cardcolor = "";
         String percentage = "";
         String dvisit = "";
-        String startdate = "";
-        String enddate = "";
+        int startdate = 0;
+        int enddate = 0;
         String puredate = "";
 
 
         SQLiteDatabase conn = openOrCreateDatabase("db", MODE_PRIVATE, null);
-        conn.execSQL("create table if not exists detail(name varchar,aadhar varchar,age int,sex varchar,mobile int,email varchar," +
+        conn.execSQL("create table if not exists detail(name varchar,aadhar varchar,age varchar,sex varchar,mobile varchar,email varchar," +
                 "occupation varchar,state varchar,city varchar,address varchar,healthhistory varchar,travelhistory varchar,latitude varchar,longitude varchar," +
-                "cardcolr varchar,percentage varchar,dvist varchar,startdate varchar,enddate varchar,puredate varchar);");
+                "cardcolor varchar,percentage varchar,dvist varchar,startdate int,enddate int,puredate varchar);");
 //0 to 19
 
 
-        conn.execSQL("insert into detail values(" + "'" + name + "'" + "," + "'" + aadhar + "'" + "," + "'" + age + "'" + "," + "'" + sex + "'" + "," + "'" + mobile + "'" + "," + "'" + sex + "'" + "," + "'" + sex + "'" + "," + "'" + sex + "'" + "," + "'" + sex + "'" + ");");
+        conn.execSQL("insert into detail values(" + "'" + namee + "'" + "," + "'" + aadharr + "'" + "," + "'" + agee + "'" + "," + "'" + sex + "'" + "," + "'" + mobile + "'" + "," + "'" + emaill + "'" + "," + "'" + occupation + "'" + "," + "'" + state + "'" + "," + "'" + city + "'" + ","+"'"+addresss+"'"+","+"'"+healthhistory+"'"+","+"'"+travelhistory+"'"+","+"'"+latitude+"'"+","+"'"+longitude+"'"+","+"'"+cardcolor+"'"+","+"'"+percentage+"'"+","+"'"+dvisit+"'"+","+"'"+startdate+"'"+","+"'"+enddate+"'"+","+"'"+puredate+"'"+");");
         Toast.makeText(User_RegistrationForm.this, " Data Saved", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
