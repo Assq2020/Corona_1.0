@@ -5,6 +5,9 @@ class EmergencyModel {
 
     object supplier {
         val hobbies = listOf<Choice>(
+                (Choice("Jharkhand Covid19 Helpline","1075")),
+                (Choice("R.M.C.H Emergency","230155")),
+                (Choice("Ranchi Muncipal Corpration","+916512211215")),
                 (Choice("Assam","6913347770")),
                 (Choice("Andra Pradesh","08662410978")),
                 (Choice("Arunachal Pradesh","9436055743")),
@@ -31,7 +34,7 @@ class EmergencyModel {
                 (Choice("Telangana","104")),
                 (Choice("Tamil Nadu","04429510500")),
                 (Choice("Tripura","03812315879")),
-                (Choice("Uttar Pradesh Toll Free Number","1800-1805-145")),
+                (Choice("Uttar Pradesh ","1800-1805-145")),
                 (Choice("Uttarakhand","104")),
                 (Choice("West Bengal Toll Free ","1800313444222")),
                 (Choice("Andaman and Nicobar","031922321102")),

@@ -434,26 +434,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:columnCount="2"
-                    android:background="@drawable/login_back"
+                    android:background="@android:color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/te">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/what_is_Coronavirus"
-                        android:layout_width="150dp"
-                        android:layout_height="250dp"
+                        android:layout_width="140dp"
+                        android:layout_height="230dp"
                         android:layout_margin="15dp"
                         android:elevation="8dp"
                         android:clickable="true"
                         app:cardCornerRadius="25dp"
-                        android:background="@color/Grey">
+                        app:cardBackgroundColor="@color/colorCard"
+                        >
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="100dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="25dp"
                             android:layout_marginRight="25dp"
                             android:layout_height="100dp"
+                            app:civ_circle_background_color="@android:color/white"
                             android:src="@drawable/virus_pic"/>
                         <TextView
                             android:layout_width="match_parent"
@@ -467,13 +469,13 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/What_are_symptoms"
-                        android:layout_width="150dp"
-                        android:layout_height="250dp"
+                        android:layout_width="140dp"
+                        android:layout_height="230dp"
                         android:layout_margin="15dp"
                         android:elevation="8dp"
                         android:clickable="true"
                         app:cardCornerRadius="25dp"
-                        android:background="@color/Grey" >
+                        app:cardBackgroundColor="@color/colorCard" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -482,6 +484,7 @@
                             android:layout_marginLeft="25dp"
                             android:layout_marginRight="25dp"
                             android:layout_height="100dp"
+                            app:civ_circle_background_color="@android:color/white"
                             android:src="@drawable/symptoms_pic"/>
                         <TextView
                             android:layout_width="match_parent"
@@ -495,13 +498,13 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/How_it_is_transmitted"
-                        android:layout_width="150dp"
-                        android:layout_height="250dp"
+                        android:layout_width="140dp"
+                        android:layout_height="230dp"
                         android:layout_margin="15dp"
                         android:elevation="8dp"
                         android:clickable="true"
                         app:cardCornerRadius="25dp"
-                        android:background="@drawable/greycircle" >
+                        app:cardBackgroundColor="@color/colorCard" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -510,6 +513,7 @@
                             android:layout_marginLeft="25dp"
                             android:layout_marginRight="25dp"
                             android:layout_height="100dp"
+                            app:civ_circle_background_color="@android:color/white"
                             android:src="@drawable/sneezing"/>
                         <TextView
                             android:layout_width="match_parent"
@@ -524,13 +528,13 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/How_to_prevent_it"
-                        android:layout_width="150dp"
-                        android:layout_height="250dp"
+                        android:layout_width="140dp"
+                        android:layout_height="230dp"
                         android:layout_margin="15dp"
                         android:elevation="8dp"
                         android:clickable="true"
                         app:cardCornerRadius="25dp"
-                        android:background="@drawable/greycircle" >
+                        app:cardBackgroundColor="@color/colorCard" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -539,6 +543,7 @@
                             android:layout_marginLeft="25dp"
                             android:layout_marginRight="25dp"
                             android:layout_height="100dp"
+                            app:civ_circle_background_color="@android:color/white"
                             android:src="@drawable/alcohal_clean"/>
                         <TextView
                             android:layout_width="match_parent"
@@ -552,13 +557,13 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/When_to_wear_mask"
-                        android:layout_width="150dp"
-                        android:layout_height="250dp"
+                        android:layout_width="140dp"
+                        android:layout_height="230dp"
                         android:layout_margin="15dp"
                         android:elevation="8dp"
                         android:clickable="true"
                         app:cardCornerRadius="25dp"
-                        android:background="@drawable/greycircle" >
+                        app:cardBackgroundColor="@color/colorCard"  >
 
                         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -567,6 +572,7 @@
                             android:layout_marginLeft="25dp"
                             android:layout_marginRight="25dp"
                             android:layout_height="100dp"
+                            app:civ_circle_background_color="@android:color/white"
                             android:src="@drawable/mask1"/>
                         <TextView
                             android:layout_width="match_parent"
@@ -580,13 +586,13 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/Is_ther_is_anyTreatment"
-                        android:layout_width="150dp"
-                        android:layout_height="250dp"
+                        android:layout_width="140dp"
+                        android:layout_height="230dp"
                         android:layout_margin="15dp"
                         android:elevation="8dp"
                         android:clickable="true"
                         app:cardCornerRadius="25dp"
-                        android:background="@drawable/greycircle" >
+                        app:cardBackgroundColor="@color/colorCard" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -595,6 +601,7 @@
                             android:layout_marginLeft="25dp"
                             android:layout_marginRight="25dp"
                             android:layout_height="100dp"
+                            app:civ_circle_background_color="@android:color/white"
                             android:src="@drawable/vaccine_kit"/>
                         <TextView
                             android:layout_width="match_parent"
@@ -608,13 +615,13 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/Information_for_travelers"
-                        android:layout_width="150dp"
-                        android:layout_height="250dp"
+                        android:layout_width="140dp"
+                        android:layout_height="230dp"
                         android:layout_margin="15dp"
                         android:elevation="8dp"
                         android:clickable="true"
                         app:cardCornerRadius="25dp"
-                        android:background="@drawable/greycircle" >
+                        app:cardBackgroundColor="@color/colorCard" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -623,6 +630,7 @@
                             android:layout_marginLeft="25dp"
                             android:layout_marginRight="25dp"
                             android:layout_height="100dp"
+                            app:civ_circle_background_color="@android:color/white"
                             android:src="@drawable/aeroplane"/>
                         <TextView
                             android:layout_width="match_parent"
@@ -636,13 +644,13 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/Fake_News"
-                        android:layout_width="150dp"
-                        android:layout_height="250dp"
+                        android:layout_width="140dp"
+                        android:layout_height="230dp"
                         android:layout_margin="15dp"
                         android:elevation="8dp"
                         android:clickable="true"
                         app:cardCornerRadius="25dp"
-                        android:background="@drawable/greycircle" >
+                        app:cardBackgroundColor="@color/colorCard" >
 
                         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -651,6 +659,7 @@
                             android:layout_marginLeft="25dp"
                             android:layout_marginRight="25dp"
                             android:layout_height="100dp"
+                            app:civ_circle_background_color="@android:color/white"
                             android:src="@drawable/fakenews"/>
 
                         <TextView

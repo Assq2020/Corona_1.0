@@ -20,11 +20,7 @@ class Contactus : AppCompatActivity() {
             startActivity(intent)
             // Toast.makeText(this,"contact us clicked",Toast.LENGTH_SHORT).show()
         }
-        help_us_btn.setOnClickListener {
-            val intent=Intent(this,Helpus::class.java)
-            startActivity(intent)
 
-        }
         feedback_btn.setOnClickListener {
             val intent= Intent(this,Feedback::class.java)
             startActivity(intent)

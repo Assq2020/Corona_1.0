@@ -8,84 +8,145 @@
     android:background="@android:color/white"
     tools:context=".Connectus">
 
-    <TextView
-        android:id="@+id/description_contact"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp"
-        android:text="If you have any project or you want to boost your Busssiness please contact us.Below we are providing some contact details"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp" />
 
     <LinearLayout
-        android:id="@+id/email_contact"
+        android:id="@+id/assq"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/description_contact"
-        android:layout_margin="10dp"
-        android:orientation="vertical"
-        android:background="@drawable/round_button"
-        android:layout_marginTop="58dp"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginLeft="20dp"
-
-            android:text="Email id  :"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginLeft="20dp"
-            android:padding="4dp"
-            android:text="assqcovid19@gmail.com"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Phone_no"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/email_contact"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-
-        android:layout_marginEnd="10dp"
-
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_marginLeft="20dp"
-
-            android:text="Phone no :"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:padding="5dp"
+            android:text="This application is devoloped by group ASSQ. ASSQ is a android application devolopment group created by students of Marwari College Ranchi under the supervision of Placement Cell Co-Ordinator Mr Anubhav Sir. This group is leading by Aman Kumar BCA final year MCR "
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:padding="5dp"
+            android:text="Teammates of ASSQ"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
 
-            android:layout_marginLeft="20dp"
-            android:padding="4dp"
-            android:text="821 013 8020, 8340 262 267 "
+        <TextView
+            android:id="@+id/name_aman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:padding="2dp"
+            android:text=" Aman Kumar BCA final year MCR"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/qamar_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_aman"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:padding="2dp"
+            android:text=" Sandeep Kumar BCA second year MCR"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/sandip_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/qamar_name"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:padding="2dp"
+            android:text=" Qamar Anwar BCA second year MCR"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/description_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:text="If you have any project or you want to boost your Busssiness please contact us.Below we are providing some contact details:-"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/email_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_button"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="20dp"
+
+                android:text="Email id  :"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="20dp"
+                android:padding="4dp"
+                android:text="assqcovid19@gmail.com"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Phone_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+
+            android:layout_marginEnd="10dp"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="20dp"
+
+                android:text="Phone no :"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="20dp"
+                android:padding="4dp"
+                android:text="821 013 8020, 8340 262 267 "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

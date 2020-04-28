@@ -5,4 +5,5 @@
     <color name="colorAccent">#00bbff</color>
     <color name="Grey">#F5F2F2</color>
     <color name="plceholder">#dddddd</color>
+    <color name="colorCard">#E0F0FA</color>
 </resources>

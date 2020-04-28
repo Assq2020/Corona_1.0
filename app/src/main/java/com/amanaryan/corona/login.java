@@ -54,7 +54,7 @@ private FirebaseAuth mAuth;
         otptext=findViewById(R.id.otptext);
         Resendcode=findViewById(R.id.resendcodeText);
         mAuth = FirebaseAuth.getInstance();
-        MasterLogin=findViewById(R.id.Master_Login);
+//        MasterLogin=findViewById(R.id.Master_Login);
 //        phoneLy.setVisibility(View.GONE);
         Resendcode.setVisibility(View.GONE);
         otpLy.setVisibility(View.GONE);
@@ -73,12 +73,12 @@ private FirebaseAuth mAuth;
 
 
         //Master Login code
-        MasterLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),User_RegistrationForm.class));
-            }
-        });
+//        MasterLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(),User_RegistrationForm.class));
+//            }
+//        });
 
         //Request otp to send
         otpBtn.setOnClickListener(new View.OnClickListener() {

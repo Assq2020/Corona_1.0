@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -37,18 +38,7 @@ class EmergencySection : AppCompatActivity() {
 
         val adapter=HobbiesAdapter(this, EmergencyModel.supplier.hobbies)
         recycleview_emergency_section.adapter=adapter
-        auth_call.setOnClickListener {
-            number=auth_no_tv.text.toString()
-            makecall()
-        }
-        doctor_call.setOnClickListener {
-            number=doctor_no_tv.text.toString()
-            makecall()
-        }
-        helpline_call.setOnClickListener {
-            number=helpline_no_tv.text.toString()
-            makecall()
-        }
+
     }
 
 
@@ -83,28 +73,30 @@ class HobbiesAdapter(val context: Context, val hobbies:List<EmergencyModel.Choic
 
         var curretPossition:Int=0
         init {
+//            itemView.setOnClickListener{
+//                val emergency=EmergencySection()
+//                number =currentHobby!!.phoneNo
+//                Log.d("callint",number)
+//                 emergency.makecall()
+//
+//
+//            }
             itemView.row_call.setOnClickListener {
                 val emergency=EmergencySection()
                 number =currentHobby!!.phoneNo
                 Log.d("callint",number)
-                 emergency.makecall()
-
-
+//    Toast.makeText(context,"button clicked",Toast.LENGTH_SHORT).show()
+              val intent = Intent(Intent.ACTION_DIAL, parse("tel:" + encode(number)))
+               context.startActivity(intent)
             }
 
-//            itemView.cv1mask_tips.setOnClickListener {
-//                val massage: String = "My hobby is :"+currentHobby!!.tittle
-//                val intent= Intent()
-//                intent.action= Intent.ACTION_SEND
-//                intent.putExtra(Intent.EXTRA_TEXT,massage)
-//                intent.type="text/plain"
-//                context.startActivity(Intent.createChooser(intent,"share to"))
-//            }
+//
         }
+
         fun SetData(hobby: EmergencyModel.Choice?,poss:Int){
 
             itemView.state_name.text=hobby!!.title
-            itemView.state_no_tv.text=hobby!!.phoneNo
+         //   itemView.state_no_tv.text=hobby!!.phoneNo
             this.currentHobby=hobby
             this.curretPossition=poss
 

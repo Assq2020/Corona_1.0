@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="25dp"
+    android:layout_marginTop="15dp"
+    android:background="@drawable/feed_et_fesign">
+
+    <TextView
+        android:id="@+id/feed_user_name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="qamar"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_feed_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="300dp"
+        android:padding="10dp"
+        android:text="I sugeest you to please change te sige of tips card .its size is too large so its apeerance is not goood"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@+id/feed_user_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/feed_user_name"
+        app:layout_constraintTop_toBottomOf="@+id/feed_user_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

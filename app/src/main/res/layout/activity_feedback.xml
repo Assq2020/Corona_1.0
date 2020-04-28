@@ -1,67 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Feedback"
-    android:background="@color/Grey">
+    android:background="@android:color/white"
+    tools:context=".Feedback">
 
-    <EditText
-        android:id="@+id/head_et_help"
-        android:layout_width="399dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/round_button"
-        android:hint="Head line"
-        android:padding="10dp"
-        android:textColor="@color/colorPrimaryDark"
-
-        android:textColorHint="@android:color/darker_gray"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/feed_desription_feedback"
+    <ScrollView
+        android:id="@+id/scrolview_feedback"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_below="@id/head_et_help"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/round_button"
-        android:hint="Please enter any inquiry message"
+
+        android:layout_height="936dp"
+        app:layout_constraintBottom_toTopOf="@+id/feeder_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleview_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrolview_feedback"
+            app:layout_constraintVertical_bias="0.554" />
+
+    </ScrollView>
+
+    <EditText
+        android:id="@+id/feeder_name"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/feed_et_fesign"
+        android:hint="Enter your name"
+        android:inputType="textPersonName"
+        android:padding="2dp"
+        android:paddingLeft="5dp"
+        android:backgroundTint="@android:color/secondary_text_dark_nodisable"
+        app:layout_constraintBottom_toTopOf="@+id/feed_content_et"
+        app:layout_constraintEnd_toEndOf="@+id/feed_content_et"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/feed_content_et" />
+
+    <EditText
+        android:id="@+id/feed_content_et"
+        android:layout_width="300dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="68dp"
+        android:background="@drawable/feed_et_fesign"
+        android:gravity="top"
+        android:hint="write your feedback here"
+        android:backgroundTint="@android:color/secondary_text_dark_nodisable"
         android:inputType="textMultiLine"
-        android:padding="15dp"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@android:color/darker_gray" />
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/submit_btn_feedback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/feed_desription_feedback"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="20dp"
+        android:id="@+id/feed_send_button"
+        android:layout_width="91dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/submit_button"
-        android:padding="8dp"
-        android:text="Drop Your Feedback"
-        android:textAllCaps="false"
+        android:text="Submit"
         android:textColor="@android:color/white"
-        android:textSize="20sp" />
+        app:layout_constraintEnd_toEndOf="@+id/feed_content_et"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/feed_content_et"
+        app:layout_constraintTop_toBottomOf="@+id/feed_content_et" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
